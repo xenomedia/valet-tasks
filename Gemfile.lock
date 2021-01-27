@@ -1,0 +1,21 @@
+PATH
+  remote: .
+  specs:
+    valet-tasks (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    dotenv (2.7.6)
+    rake (13.0.3)
+
+PLATFORMS
+  arm64-darwin-20
+
+DEPENDENCIES
+  dotenv
+  rake (~> 13.0)
+  valet-tasks!
+
+BUNDLED WITH
+   2.2.3
