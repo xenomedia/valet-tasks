@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'dotenv/load'
+require 'valet-tasks/env/load'
 require 'rake'
 require 'rake/tasklib'
 
@@ -16,9 +16,10 @@ require_relative 'valet-tasks/services/gpg'
 require_relative 'valet-tasks/services/mysql_env'
 require_relative 'valet-tasks/services/mysql_database_creator'
 
+require_relative 'valet-tasks/commands/env'
 require_relative 'valet-tasks/commands/laravel'
 require_relative 'valet-tasks/commands/db'
-
+require_relative 'valet-tasks/commands/drupal'
 
 module ValetTasks
   class Error < StandardError; end

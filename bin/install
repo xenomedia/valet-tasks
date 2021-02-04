@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Creates Rakefile.
+echo "" >> Rakefile
+echo "require 'bundler/setup'" >> Rakefile
+echo "require 'valet-tasks'" >> Rakefile
+echo "" >> Rakefile
+
+# Creates Gemfile.
+echo "# frozen_string_literal: true" >> Gemfile
+echo "" >> Gemfile
+echo 'source "https://rubygems.org"' >> Gemfile
+echo "" >> Gemfile
+echo 'git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }' >> Gemfile
+echo "" >> Gemfile
+echo 'gem "valet-tasks", path: "../../Gems/valet-tasks"' >> Gemfile
+echo 'gem "rake"' >> Gemfile
+
+# Run install.
+bundle install

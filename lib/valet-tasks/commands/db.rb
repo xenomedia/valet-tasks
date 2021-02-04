@@ -8,6 +8,11 @@ module ValetTasks
 
         desc 'Database Commands'
         namespace :db do
+          desc 'Create Local Project Mysql Database.'
+          task :create_database do
+            mysql = ValetTasks::Service::MysqlDatabaseCreator.run          
+          end   
+
           desc 'Get Latest Database'
           task :get do
             dir = ValetTasks::Service::DatabaseBackup::DIRECTORY
@@ -25,6 +30,12 @@ module ValetTasks
             file = ARGV[1] ? ARGV[1] : "#{ValetTasks::Service::DatabaseBackup::DIRECTORY}/#{ENV['DB_BACKUP_NAME']}.sql"
             mysql = ValetTasks::Service::MysqlEnv.get
             mysql.import_sql file
+          end
+
+          desc 'Refresh Database'
+          task :refresh do
+            Rake::Task["db:get"].invoke
+            Rake::Task["db:import"].invoke
           end
         end
       end
