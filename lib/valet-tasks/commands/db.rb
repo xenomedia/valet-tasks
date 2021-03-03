@@ -2,7 +2,7 @@ module ValetTasks
   module Task
     include Rake::DSL if defined? Rake::DSL
     
-	  class Db < ::Rake::TaskLib
+    class Db < ::Rake::TaskLib
       def initialize
         super
 

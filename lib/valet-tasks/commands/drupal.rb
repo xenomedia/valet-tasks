@@ -33,8 +33,9 @@ module ValetTasks
 
             settings_file = 'web/sites/default/settings.local.php'
             default_settings_file = 'web/sites/example.settings.local.php'
+            change_log = 'web/CHANGELOG.txt'
 
-            if File.readlines("web/CHANGELOG.txt").grep(/Drupal 7./).any?
+            if (File.exist?(change_log) and File.readlines(change_log).grep(/Drupal 7./).any?)
               settings_file = 'web/sites/default/local.settings.php'
               default_settings_file = 'web/sites/default/default.local.settings.php'
             end

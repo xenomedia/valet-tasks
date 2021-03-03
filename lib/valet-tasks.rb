@@ -20,6 +20,7 @@ require_relative 'valet-tasks/commands/env'
 require_relative 'valet-tasks/commands/laravel'
 require_relative 'valet-tasks/commands/db'
 require_relative 'valet-tasks/commands/drupal'
+require_relative 'valet-tasks/commands/wordpress'
 
 module ValetTasks
   class Error < StandardError; end
