@@ -12,8 +12,11 @@ module ValetTasks
           task :setup do
             Rake::Task["env:create_env_file"].invoke
             Rake::Task["env:update_env_file"].invoke
+            self.update_env
             Rake::Task["db:create_database"].invoke
+            self.update_env
             Rake::Task["db:get"].invoke
+            self.update_env
             Rake::Task["db:import"].invoke
           end  
         end
@@ -27,6 +30,10 @@ module ValetTasks
         task :update_env_file do
           Rake::Task["env:update_env_file"].invoke
         end
+      end
+
+      def update_env
+        Dotenv.overload('.env')
       end
     end
   end

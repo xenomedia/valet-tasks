@@ -12,9 +12,13 @@ module ValetTasks
           task :setup do
             Rake::Task["drupal:create_env_file"].invoke
             Rake::Task["drupal:update_env_file"].invoke
+            self.update_env
             Rake::Task["db:create_database"].invoke
+            self.update_env
             Rake::Task["db:get"].invoke
+            self.update_env
             Rake::Task["db:import"].invoke
+            self.update_env
             Rake::Task["drupal:create_settings"].invoke
           end
 
@@ -72,6 +76,10 @@ module ValetTasks
       			puts "Settings file has been created."
           end 
         end
+      end
+
+      def update_env
+        Dotenv.overload('.env2')
       end
     end
   end

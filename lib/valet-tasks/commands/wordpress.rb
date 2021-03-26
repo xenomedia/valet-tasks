@@ -12,10 +12,15 @@ module ValetTasks
           task :setup do
             Rake::Task["drupal:create_env_file"].invoke
             Rake::Task["drupal:update_env_file"].invoke
+            self.update_env
             Rake::Task["db:create_database"].invoke
+            self.update_env
             Rake::Task["db:get"].invoke
+            self.update_env
             Rake::Task["db:import"].invoke
+            self.update_env
             Rake::Task["wordpress:create_config"].invoke
+            self.update_env
             Rake::Task["wordpress:search_and_replace"].invoke
           end
 
@@ -73,6 +78,10 @@ module ValetTasks
 
       def get_local_url
         return "http://#{File.basename(Dir.getwd)}.test"
+      end
+
+      def update_env
+        Dotenv.overload('.env2')
       end
     end
   end
