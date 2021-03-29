@@ -1,7 +1,7 @@
 module ValetTasks
   module Task
     include Rake::DSL if defined? Rake::DSL
-    
+
     class Db < ::Rake::TaskLib
       def initialize
         super
@@ -10,8 +10,8 @@ module ValetTasks
         namespace :db do
           desc 'Create Local Project Mysql Database.'
           task :create_database do
-            mysql = ValetTasks::Service::MysqlDatabaseCreator.run          
-          end   
+            mysql = ValetTasks::Service::MysqlDatabaseCreator.run
+          end
 
           desc 'Get Latest Database'
           task :get do
@@ -36,6 +36,12 @@ module ValetTasks
           task :refresh do
             Rake::Task["db:get"].invoke
             Rake::Task["db:import"].invoke
+          end
+
+          desc 'Unarchive Database'
+          task :unarchive do
+            db_backup = ValetTasks::Service::DatabaseBackup.new(file_name: ENV['DB_BACKUP_NAME'], extension: ENV['DB_BACKUP_FILE_EXTENSION'], server_path: ENV['DB_BACKUP_PATH'], gpg_key: ENV['GPG_KEY'], pantheon_site_name: ENV['PANTHEON_SITE_NAME'], pantheon_site_env: ENV['PANTHEON_SITE_ENV'])
+            db_backup.unarchive
           end
         end
       end

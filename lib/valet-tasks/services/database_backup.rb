@@ -26,12 +26,6 @@ module ValetTasks
         end
       end
 
-      private
-
-      def is_pantheon?
-        @pantheon_site_name ? true : false
-      end
-
       def unarchive
         case @extension
         when 'sql.gpg'
@@ -40,6 +34,12 @@ module ValetTasks
         when 'sql.gz'
           system("gunzip #{@local_file_path}")
         end
+      end
+
+      private
+
+      def is_pantheon?
+        @pantheon_site_name ? true : false
       end
     end
   end
