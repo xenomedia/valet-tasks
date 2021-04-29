@@ -14,7 +14,7 @@ module ValetTasks
     end
 
     def database_exists?
-      hasDatabase = `mysql -u root -e "SHOW DATABASES LIKE '#{@database}'"`  
+      hasDatabase = `mysql -u root -e "SHOW DATABASES LIKE '#{@database}'"`
       hasDatabase == '' || hasDatabase == nil ? false : true
     end
 
@@ -27,6 +27,10 @@ module ValetTasks
       system("mysql -u root -e \"CREATE DATABASE #{@database}\"")
     end
 
+    def drop_database
+      system("mysql -u root -e \"DROP DATABASE #{@database}\"")
+    end
+
     def create_user
       system("mysql -u root -e \"CREATE USER '#{@username}'@'#{@host}' IDENTIFIED BY '#{@password}'\"")
     end
@@ -36,7 +40,7 @@ module ValetTasks
     end
 
     def grant_user_database
-      system("mysql -u root -e \"GRANT ALL ON #{@database}.* TO '#{@username}'@'#{@host}';FLUSH PRIVILEGES;\"") 
+      system("mysql -u root -e \"GRANT ALL ON #{@database}.* TO '#{@username}'@'#{@host}';FLUSH PRIVILEGES;\"")
       end
     end
   end

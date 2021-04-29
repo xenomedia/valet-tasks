@@ -32,9 +32,17 @@ module ValetTasks
             mysql.import_sql file
           end
 
+          desc 'Drop Database'
+          task :drop do
+            mysql = ValetTasks::Service::MysqlEnv.get
+            mysql.drop_database
+          end
+
           desc 'Refresh Database'
           task :refresh do
             Rake::Task["db:get"].invoke
+            Rake::Task["db:drop"].invoke
+            Rake::Task["db:create_database"].invoke
             Rake::Task["db:import"].invoke
           end
 
