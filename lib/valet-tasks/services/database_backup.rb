@@ -32,7 +32,7 @@ module ValetTasks
           system("gpg --yes --ignore-mdc-error --batch --passphrase=#{@gpg_key} #{@local_file_path}")
           system("rm #{@local_file_path}")
         when 'sql.gz'
-          system("gunzip #{@local_file_path}")
+          system("gunzip -f #{@local_file_path}")
         end
       end
 
