@@ -1,8 +1,6 @@
-# ValetTasks
+# Valet Tasks
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/valet-tasks`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+The Valet Tasks gem allows developers at Xeno Media to easily setup their local environemnt for development.
 
 ## Installation
 
@@ -22,18 +20,42 @@ Or install it yourself as:
 
 ## Setup
 
-Create `db_backup` item in your ssh config to the server you store your database backups.
+Run install command:
 
-You will need to have the following in your .env.example file.
-
+```bash
+curl -fsSL https://raw.githubusercontent.com/xenomedia/valet-tasks/main/bin/install| bash
 ```
-DB_BACKUP_NAME=mybackup.sql.gz
-DB_BACKUP_PATH=/var/livedb
+
+Create .env2.example file:
+
+```ruby
+######################################################
+#        Valet                                       #
+######################################################
+
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+DB_PREFIX=
+DB_BACKUP_NAME=
+DB_BACKUP_FILE_EXTENSION= # Examples: sql.gz or sql.gpg.
+DB_BACKUP_PATH=# Path on server where backups are stored.
+GPG_KEY= # Optional. Remove if not needed.
+
 ```
 
 ## Usage
 
-TODO: Write usage instructions here
+Run setup commands:
+
+```bash
+rake drupal:setup
+rake wordpress:setup
+rake laravel:setup
+```
 
 ## Development
 
