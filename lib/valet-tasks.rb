@@ -15,6 +15,7 @@ require_relative 'valet-tasks/services/database_backup'
 require_relative 'valet-tasks/services/gpg'
 require_relative 'valet-tasks/services/mysql_env'
 require_relative 'valet-tasks/services/mysql_database_creator'
+require_relative 'valet-tasks/services/terminus'
 
 require_relative 'valet-tasks/commands/env'
 require_relative 'valet-tasks/commands/laravel'

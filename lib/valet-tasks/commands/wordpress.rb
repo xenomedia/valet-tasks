@@ -1,7 +1,7 @@
 module ValetTasks
   module Task
     include Rake::DSL if defined? Rake::DSL
-    
+
     class Wordpress < ::Rake::TaskLib
       def initialize
         super
@@ -62,11 +62,12 @@ module ValetTasks
             File.write(config_file, config, mode: 'a')
 
             puts "Config file has been created."
-          end 
+          end
 
           desc 'Wordpress search and replace'
           task :search_and_replace do
             command = "wp search-replace '#{ENV['LIVE_URL']}' '#{self.get_local_url}' --skip-columns=guid"
+            puts command
             if (File.exist?('web'))
                 command.prepend("cd web && ")
             end

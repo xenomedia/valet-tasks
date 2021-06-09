@@ -18,7 +18,9 @@ module ValetTasks
 
       def get_database
         if self.is_pantheon?
-          # @TODO Add Pantheon
+          terminus = ValetTasks::Service::Terminus.new(site_name: @pantheon_site_name, env: @pantheon_site_env)
+          terminus.backup_create
+          terminus.backup_get(@local_file_path)
         else
           puts "scp db_backup:#{@server_backup_path} #{@local_file_path}"
           system("scp db_backup:#{@server_backup_path} #{@local_file_path}")
