@@ -44,22 +44,7 @@ module ValetTasks
               next
             end
 
-            config = "<?php\n"
-            config << "\n"
-            config << "/** MySQL database name */\n"
-            config << "define('DB_NAME', '#{ENV['DB_DATABASE']}');\n"
-            config << "\n"
-            config << "/** MySQL database username */\n"
-            config << "define('DB_USER', '#{ENV['DB_USERNAME']}');\n"
-            config << "\n"
-            config << "/** MySQL database password */\n"
-            config << "define('DB_PASSWORD', '#{ENV['DB_PASSWORD']}');\n"
-            config << "\n"
-            config << "/** MySQL database hostname */\n"
-            config << "define('DB_HOST', '#{ENV['DB_HOST']}');\n"
-            config << "\n"
-
-            File.write(config_file, config, mode: 'a')
+            File.write(config_file, self.get_wordpress_config, mode: 'a')
 
             puts "Config file has been created."
           end
@@ -83,6 +68,25 @@ module ValetTasks
 
       def update_env
         Dotenv.overload('.env2')
+      end
+
+      private
+
+      def get_wordpress_config
+        config = "<?php\n"
+        config << "\n"
+        config << "/** MySQL database name */\n"
+        config << "define('DB_NAME', '#{ENV['DB_DATABASE']}');\n"
+        config << "\n"
+        config << "/** MySQL database username */\n"
+        config << "define('DB_USER', '#{ENV['DB_USERNAME']}');\n"
+        config << "\n"
+        config << "/** MySQL database password */\n"
+        config << "define('DB_PASSWORD', '#{ENV['DB_PASSWORD']}');\n"
+        config << "\n"
+        config << "/** MySQL database hostname */\n"
+        config << "define('DB_HOST', '#{ENV['DB_HOST']}');\n"
+        config << "\n"
       end
     end
   end

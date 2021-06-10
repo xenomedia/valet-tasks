@@ -54,24 +54,8 @@ module ValetTasks
               next
             end
 
-            settings_to_add = "
-
-      			$databases['default']['default'] = [
-      			  'database' => '#{ENV['DB_DATABASE']}',
-      			  'username' => '#{ENV['DB_USERNAME']}',
-      			  'password' => '#{ENV['DB_PASSWORD']}',
-      			  'host' => '#{ENV['DB_HOST']}',
-      			  'port' => '#{ENV['DB_PORT']}',
-      			  'prefix' => '#{ENV['DB_PREFIX']}',
-      			  'driver' => 'mysql',
-                    'collation' => 'utf8mb4_general_ci',
-      			];
-
-      			$settings['hash_salt'] = '123456';
-      			"
-
       			FileUtils.cp_r("./#{default_settings_file}", "./#{settings_file}")
-      			File.write(settings_file, settings_to_add, mode: 'a')
+      			File.write(settings_file, self.get_drupal_settings, mode: 'a')
 
       			puts "Settings file has been created."
           end 
@@ -80,6 +64,25 @@ module ValetTasks
 
       def update_env
         Dotenv.overload('.env2')
+      end
+
+      private
+
+      def get_drupal_settings
+        "
+          $databases['default']['default'] = [
+            'database' => '#{ENV['DB_DATABASE']}',
+            'username' => '#{ENV['DB_USERNAME']}',
+            'password' => '#{ENV['DB_PASSWORD']}',
+            'host' => '#{ENV['DB_HOST']}',
+            'port' => '#{ENV['DB_PORT']}',
+            'prefix' => '#{ENV['DB_PREFIX']}',
+            'driver' => 'mysql',
+                  'collation' => 'utf8mb4_general_ci',
+          ];
+
+          $settings['hash_salt'] = '123456';
+          "
       end
     end
   end
