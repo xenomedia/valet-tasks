@@ -1,6 +1,6 @@
 # Valet Tasks
 
-The Valet Tasks gem allows developers at Xeno Media to easily setup their local environemnt for development.
+The Valet Tasks gem allows developers at Xeno Media to easily setup their local environment for development.
 
 ## Installation
 
