@@ -26,27 +26,6 @@ Run install command:
 curl -fsSL https://raw.githubusercontent.com/xenomedia/valet-tasks/main/bin/install| bash
 ```
 
-Create .env2.example file:
-
-```ruby
-######################################################
-#        Valet                                       #
-######################################################
-
-DB_CONNECTION=mysql
-DB_HOST=localhost
-DB_PORT=3306
-DB_DATABASE=
-DB_USERNAME=
-DB_PASSWORD=
-DB_PREFIX=
-DB_BACKUP_NAME=
-DB_BACKUP_FILE_EXTENSION= # Examples: sql.gz or sql.gpg.
-DB_BACKUP_PATH=# Path on server where backups are stored.
-GPG_KEY= # Optional. Remove if not needed.
-
-```
-
 ## Usage
 
 Run setup commands:
