@@ -13,7 +13,7 @@ echo 'source "https://rubygems.org"' >> Gemfile
 echo "" >> Gemfile
 echo 'git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }' >> Gemfile
 echo "" >> Gemfile
-echo 'gem "valet-tasks"' >> Gemfile
+echo 'gem "valet-tasks", :git => "git://github.com/xenomedia/valet-tasks"' >> Gemfile
 echo 'gem "rake"' >> Gemfile
 
 # Create default .env2 file.
@@ -28,6 +28,7 @@ echo "DB_PREFIX=" >> .env2.example
 echo "DB_BACKUP_NAME=" >> .env2.example
 echo "DB_BACKUP_FILE_EXTENSION=sql.gz" >> .env2.example
 echo "DB_BACKUP_PATH=/var/livedb" >> .env2.example
+echo "#GPG_KEY=" >> .env2.example
 
 # Run install.
 bundle install
