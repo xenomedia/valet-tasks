@@ -16,5 +16,18 @@ echo "" >> Gemfile
 echo 'gem "valet-tasks", path: "../../Gems/valet-tasks"' >> Gemfile
 echo 'gem "rake"' >> Gemfile
 
+# Create default .env2 file.
+echo "" >> .env2.example
+echo "DB_CONNECTION=mysql"
+echo "DB_HOST=localhost" >> .env2.example
+echo "DB_PORT=3306" >> .env2.example
+echo "DB_DATABASE=" >> .env2.example
+echo "DB_USERNAME=" >> .env2.example
+echo "DB_PASSWORD=" >> .env2.example
+echo "DB_PREFIX=" >> .env2.example
+echo "DB_BACKUP_NAME=" >> .env2.example
+echo "DB_BACKUP_FILE_EXTENSION=sql.gz" >> .env2.example
+echo "DB_BACKUP_PATH=/var/livedb" >> .env2.example
+
 # Run install.
 bundle install
