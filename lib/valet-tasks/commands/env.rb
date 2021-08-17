@@ -29,7 +29,7 @@ module ValetTasks
 
           desc 'Update Environment file variables.'
           task :update_env_file do
-            env_file = ARGV[1] ? ARGV[1] : '.env'
+            env_file = env_file_name
             databaseCredentialsAsker = ValetTasks::Service::DatabaseCredentialsAsker.new
             {
               'DB_DATABASE' => databaseCredentialsAsker.database,
@@ -42,8 +42,26 @@ module ValetTasks
               ValetTasks::Model::EnvFile.update_variable(env_file, variable, value)
             end
             ValetTasks::Service::Gpg.set_key_if_needed(env_file)
+            self.set_database_backup
           end   
         end
+      end
+
+      def set_database_backup
+        key = 'DB_BACKUP_NAME'
+        puts "What is the: #{key}? If left blank `#{default_name}` will be used."
+        STDOUT.flush
+        input = STDIN.gets.chomp
+        input = input != '' ? input : default_name
+        ValetTasks::Model::EnvFile.update_variable(env_file_name, key, input)
+      end
+
+      def default_name
+        File.basename(Dir.pwd)
+      end
+
+      def env_file_name
+        env_file = ARGV[1] ? ARGV[1] : '.env'
       end
     end
   end
