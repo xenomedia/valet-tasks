@@ -30,5 +30,9 @@ echo "DB_BACKUP_FILE_EXTENSION=sql.gz" >> .env2.example
 echo "DB_BACKUP_PATH=/var/livedb" >> .env2.example
 echo "#GPG_KEY=" >> .env2.example
 
+# Ignore Gemfile.lock
+echo "" >> .gitignore
+echo "Gemfile.lock" >> .gitignore
+
 # Run install.
 bundle install
