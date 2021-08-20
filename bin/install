@@ -13,7 +13,7 @@ echo 'source "https://rubygems.org"' >> Gemfile
 echo "" >> Gemfile
 echo 'git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }' >> Gemfile
 echo "" >> Gemfile
-echo 'gem "valet-tasks", :git => "git://github.com/xenomedia/valet-tasks"' >> Gemfile
+echo 'gem "valet-tasks", :git => "https://github.com/xenomedia/valet-tasks.git"' >> Gemfile
 echo 'gem "rake"' >> Gemfile
 
 # Create default .env2 file.
