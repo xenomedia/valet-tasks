@@ -10,8 +10,8 @@ module ValetTasks
         namespace :wordpress do
           desc 'Wordpress Initial Setup - Runs all the commands for setting up project for development.'
           task :setup do
-            Rake::Task["drupal:create_env_file"].invoke
-            Rake::Task["drupal:update_env_file"].invoke
+            Rake::Task["wordpress:create_env_file"].invoke
+            Rake::Task["wordpress:update_env_file"].invoke
             self.update_env
             Rake::Task["db:create_database"].invoke
             self.update_env
@@ -24,12 +24,12 @@ module ValetTasks
             Rake::Task["wordpress:search_and_replace"].invoke
           end
 
-          desc 'Drupal create environment file.'
+          desc 'Wordpress create environment file.'
           task :create_env_file do
             system 'rake env:create_env_file .env2'
           end
 
-          desc 'Drupal update Environment file variables.'
+          desc 'Wordpress update Environment file variables.'
           task :update_env_file do
             system 'rake env:update_env_file .env2'
           end
