@@ -37,8 +37,12 @@ module ValetTasks
           desc 'Create Wordpress Config'
           task :create_config do
 
-            config_file = 'wp-config-local.php'
+            config_file = 'web/wp-config.php'
+            if (!File.exist?(config_file) and  File.exist?('web/wp-config-sample.php'))
+              FileUtils.cp('web/wp-config-sample.php', config_file)
+            end
 
+            config_file = 'wp-config-local.php'
             if (File.exist?(config_file))
               abort("Config file already exists.")
               next
