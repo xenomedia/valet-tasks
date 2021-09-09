@@ -28,6 +28,7 @@ echo "DB_PREFIX=" >> .env2.example
 echo "DB_BACKUP_NAME=" >> .env2.example
 echo "DB_BACKUP_FILE_EXTENSION=sql.gz" >> .env2.example
 echo "DB_BACKUP_PATH=/var/livedb" >> .env2.example
+echo "LIVE_URL=" >> .env2.example
 echo "#GPG_KEY=" >> .env2.example
 
 # Ignore Gemfile.lock
