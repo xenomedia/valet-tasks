@@ -26,6 +26,16 @@ Run install command:
 curl -fsSL https://raw.githubusercontent.com/xenomedia/valet-tasks/main/bin/install| bash
 ```
 
+Create a record in your ``~/.ssh/config` file for db_backup. This should be the place where your database backups live.
+
+````bash
+# Valet Tasks.
+Host db_backup
+    Hostname xxx.xxx.xxx.xx
+    User user
+    Port 22
+```
+
 ## Usage
 
 Run setup commands:
