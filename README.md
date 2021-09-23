@@ -28,7 +28,7 @@ curl -fsSL https://raw.githubusercontent.com/xenomedia/valet-tasks/main/bin/inst
 
 Create a record in your ``~/.ssh/config` file for db_backup. This should be the place where your database backups live.
 
-````bash
+```bash
 # Valet Tasks.
 Host db_backup
     Hostname xxx.xxx.xxx.xx
