@@ -38,8 +38,6 @@ module ValetTasks
         end
       end
 
-      private
-
       def is_pantheon?
         @pantheon_site_name ? true : false
       end
