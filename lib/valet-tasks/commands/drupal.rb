@@ -66,8 +66,6 @@ module ValetTasks
         Dotenv.overload('.env2')
       end
 
-      private
-
       def get_drupal_settings
         "
           $databases['default']['default'] = [
